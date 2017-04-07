@@ -18,7 +18,7 @@
 <meta property="og:description" content="这个用的的确是很方便，简单的安装，比搭服务器也要简单的多，自己写点文章发表还是不错的，但是我想我们真的爱写博客也应该去尝试别的方法。提升自己的能力。
 
 学习前端进程及理解在实际的练习之前还是应该先去理解所要用的一些恭喜，这样才能提高我们的记忆力，不要为了节省力气去网上随便找代码，这样根本对自己没得多大的提升；只有我们学的时候多花时间，在工作时才能省去更多的时间，才有时间去学习新的知识。总之我们学习">
-<meta property="og:updated_time" content="2017-04-07T03:50:09.965Z">
+<meta property="og:updated_time" content="2017-04-07T04:00:25.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="感想">
 <meta name="twitter:description" content="这个用的的确是很方便，简单的安装，比搭服务器也要简单的多，自己写点文章发表还是不错的，但是我想我们真的爱写博客也应该去尝试别的方法。提升自己的能力。
@@ -182,88 +182,6 @@
         <p>这个用的的确是很方便，简单的安装，比搭服务器也要简单的多，自己写点文章发表还是不错的，但是我想我们真的爱写博客也应该去尝试别的方法。提升自己的能力。</p>
 <hr>
 <h2 id="学习前端进程及理解"><a href="#学习前端进程及理解" class="headerlink" title="学习前端进程及理解"></a>学习前端进程及理解</h2><p>在实际的练习之前还是应该先去理解所要用的一些恭喜，这样才能提高我们的记忆力，不要为了节省力气去网上随便找代码，这样根本对自己没得多大的提升；只有我们学的时候多花时间，在工作时才能省去更多的时间，才有时间去学习新的知识。总之我们学习中是不能偷懒的，还有面对困难不要气馁，不要恐惧未来的事情，想做的事就去做，不要总是想着他很难，也不要随意的相信别人的话，只有自己去做才能知道，所以我们必须勤快一点。</p>
-<hr>
-<h2 id="安装lamp"><a href="#安装lamp" class="headerlink" title="安装lamp"></a>安装lamp</h2><p>一、<br>准备工作：</p>
-<p>1、配置防火墙，开启80端口、3306端口</p>
-<p>vi /etc/sysconfig/iptables</p>
-<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT #允许80端口通过防火墙</p>
-<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT #允许3306端口通过防火墙</p>
-<p>将以上内容添加到 -A INPUT -m state –state NEW -m tcp -p tcp –dport 22 -j ACCEPT 的下面</p>
-<p>/etc/init.d/iptables restart #最后重启防火墙使配置生效</p>
-<p>2、关闭SELINUX</p>
-<p>vi /etc/selinux/config</p>
-<p> #SELINUX=enforcing  </p>
-<p> #SELINUXTYPE=targeted </p>
-<p>SELINUX=disabled #增加</p>
-<p>:wq #保存，关闭</p>
-<p>shutdown -r now #重启系统</p>
-<p>二、<br>安装：</p>
-<p>1、安装Apache</p>
-<p>卸载自带httpd: yum remove httpd</p>
-<p>yum install httpd #根据提示，输入Y安装即可成功安装</p>
-<p>/etc/init.d/httpd start #启动Apache</p>
-<p>备注：Apache启动之后有可能会提示错误：</p>
-<p>正在启动 httpd:httpd: Could not reliably determine the server’s fully qualif domain name, using ::1 for ServerName</p>
-<p>解决办法：<br>vi /etc/httpd/conf/httpd.conf #编辑</p>
-<p>找到 #ServerName www.example.com:80</p>
-<p>修改为 ServerName www.osyunwei.com:80 #这里设置为你自己的域名，如果没有域名，可以设置为localhost</p>
-<p>:wq #保存退出    </p>
-<p>chkconfig httpd on #设为开机启动</p>
-<p>/etc/init.d/httpd restart #重启Apache</p>
-<p>2、安装MySQL</p>
-<p>先卸载自带mysql:</p>
-<p>yum remove mysql mysql-server mysql-libs compat-mysql51<br>rm -rf /var/lib/mysql<br>rm /etc/my.cnf</p>
-<p>安装：</p>
-<p>yum install mysql mysql-server #询问是否要安装，输入Y即可自动安装,直到安装完成</p>
-<p>/etc/init.d/mysqld start #启动MySQL</p>
-<p>chkconfig mysqld on #设为开机启动</p>
-<p>cp /usr/share/mysql/my-medium.cnf /etc/my.cnf #拷贝配置文件（注意：如果/etc目录下面默认有一个my.cnf，直接覆盖即可）</p>
-<p>为root账户设置密码：</p>
-<p>mysql_secure_installation</p>
-<p>几次回车，根据提示输入Y<br>输入2次密码，回车<br>根据提示一路输入Y<br>最后出现：Thanks for using MySQL!</p>
-<p>MySql密码设置完成，重新启动 MySQL：</p>
-<p>/etc/init.d/mysqld restart #重启</p>
-<p>/etc/init.d/mysqld stop #停止</p>
-<p>/etc/init.d/mysqld start #启动</p>
-<p>3、安装PHP5</p>
-<p>yum install php</p>
-<p>根据提示输入Y直到安装完成</p>
-<p>安装PHP组件，使 PHP5 支持 MySQL</p>
-<p>yum install php-mysql php-gd libjpeg* php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-bcmath php-mhash libmcrypt</p>
-<p>这里选择以上安装包进行安装</p>
-<p>根据提示输入Y回车</p>
-<p>/etc/init.d/mysqld restart #重启MySql</p>
-<p>/etc/init.d/httpd restart #重启Apche</p>
-<p>三、<br>相关配置：</p>
-<p>1、Apache配置</p>
-<p>vi /etc/httpd/conf/httpd.conf #编辑文件</p>
-<p>建议filezilla将文件下载用notepad++进行修改</p>
-<p>在44行 ServerTokens OS  修改为：ServerTokens Prod （在出现错误页的时候不显示服务器操作系统的名称）</p>
-<p>在536行 ServerSignature On 修改为：ServerSignature Off （在错误页中不显示Apache的版本）</p>
-<p>在331行 Options Indexes FollowSymLinks  修改为：Options i n c l u d es e x e cCGI FollowSymLinks（允许服务器执行CGI及SSI，禁止列出目录）</p>
-<p>在796行 #AddHandler cgi-script .cgi 修改为：AddHandler cgi-script .cgi .pl （允许扩展名为.pl的CGI脚本运行）</p>
-<p>在338行 AllowOverride None 修改为：AllowOverride All （允许.htaccess）</p>
-<p>在759行 AddDefaultCharset UTF-8 修改为：AddDefaultCharset GB2312 （添加GB2312为默认编码）</p>
-<p>在554行 Options Indexes MultiViews FollowSymLinks 修改为 Options MultiViews FollowSymLinks（不在浏览器上显示树状目录结构）</p>
-<p>在402行 DirectoryIndex index.html index.html.var 修改为：DirectoryIndex index.html index.htm Default.html Default.htm<br>index.php Default.php index.html.var （设置默认首页文件，增加index.php）</p>
-<p>在76行 KeepAlive Off 修改为：KeepAlive On （允许程序性联机）</p>
-<p>在83行 MaxKeepAliveRequests 100 修改为：MaxKeepAliveRequests 1000 （增加同时连接数）</p>
-<p>:wq #保存退出</p>
-<p>/etc/init.d/httpd restart #重启</p>
-<p>rm -f /etc/httpd/conf.d/welcome.conf /var/www/error/noindex.html #删除默认测试页</p>
-<p>2、php配置</p>
-<p>vi /etc/php.ini #编辑</p>
-<p>推荐同上面修改方式</p>
-<p>在946行 ；date.timezone = PRC #把前面的分号去掉，改为date.timezone = PRC</p>
-<p>在432行 expose_php = Off 禁止显示php版本的信息</p>
-<p>在745行 magic_quotes_gpc = On 打开magic_quotes_gpc来防止SQL注入</p>
-<p>在229行 short_open_tag = ON 支持php短标签</p>
-<p>在380行 open_basedir = .:/tmp/ 设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系 统)，可以注销此行，或者直接写上程序的目录/data/www.osyunwei.com/:/tmp/</p>
-<p>:wq #保存退出</p>
-<p>/etc/init.d/mysqld restart #重启MySql</p>
-<p>/etc/init.d/httpd restart #重启Apche</p>
-<p>测试：</p>
-<p>在/var/www/html建立刚刚设置的默认主页名字中的任意一个如：index.html；就可以自己编写自己的主页了。</p>
 
       
 
