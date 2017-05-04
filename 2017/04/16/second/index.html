@@ -24,7 +24,7 @@ vi /etc/sysconfig/iptables
 vi /etc/sysconfig/iptables
 -A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT          //允许80端口通过防火墙
 -A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -">
-<meta property="og:updated_time" content="2017-05-04T14:52:26.924Z">
+<meta property="og:updated_time" content="2017-05-04T16:17:20.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux手动搭配lamp环境">
 <meta name="twitter:description" content="一、准备工作：
@@ -202,8 +202,7 @@ vi /etc/sysconfig/iptables
 <p>找到  #SELINUXTYPE=targeted //注释掉 </p>
 <p>SELINUX=disabled //增加</p>
 <p>:wq //保存，关闭</p>
-<p>shutdown -r now //重启系统</p>
-<hr>
+<p>shutdown -r now //重启系统<br><a id="more"></a></p>
 <p>二、安装：<br>1、安装Apache</p>
 <p>卸载自带httpd: yum remove httpd</p>
 <p>yum install httpd //根据提示，输入Y安装即可成功安装</p>
