@@ -181,14 +181,7 @@
 <p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT          //允许80端口通过防火墙</p>
 <p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT          //允许3306端口通过防火墙</p>
 <p>将以上内容添加到 -A INPUT -m state –state NEW -m tcp -p tcp –dport 22 -j ACCEPT 的下面</p>
-<p>/etc/init.d/iptables restart  //最后重启防火墙使配置生效</p>
-<p>2、关闭SELINUX</p>
-<p>vi /etc/selinux/config</p>
-<p>找到  #SELINUX=enforcing //注释掉</p>
-<p>找到  #SELINUXTYPE=targeted //注释掉 </p>
-<p>SELINUX=disabled //增加</p>
-<p>:wq //保存，关闭</p>
-<p>shutdown -r now //重启系统<br>
+<p>/etc/init.d/iptables restart  //最后重启防火墙使配置生效<br>
         
           <a class="article-more-a" href="/2017/04/16/second/#more">more >></a>
         
