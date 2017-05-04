@@ -151,19 +151,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hello-world1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-second" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/hello-world1/">linux手动搭配lamp环境</a>
+      <a class="article-title" href="/2017/04/16/second/">linux手动搭配lamp环境</a>
     </h1>
   
 
         
-        <a href="/2017/04/16/hello-world1/" class="archive-article-date">
+        <a href="/2017/04/16/second/" class="archive-article-date">
   	<time datetime="2017-04-16T08:43:25.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
 </a>
         
@@ -172,6 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>一、准备工作：</p>
+<hr>
 <p>1、配置防火墙，开启80端口、3306端口</p>
 <p>vi /etc/sysconfig/iptables</p>
 <p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT          //允许80端口通过防火墙</p>
@@ -185,6 +186,7 @@
 <p>SELINUX=disabled //增加</p>
 <p>:wq //保存，关闭</p>
 <p>shutdown -r now //重启系统</p>
+<hr>
 <p>二、安装：<br>1、安装Apache</p>
 <p>卸载自带httpd: yum remove httpd</p>
 <p>yum install httpd //根据提示，输入Y安装即可成功安装</p>
@@ -264,7 +266,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/16/hello-world1/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/16/second/">展开全文 >></a>
         </p>
       
 
