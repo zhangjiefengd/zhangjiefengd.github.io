@@ -150,6 +150,205 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Know markdown" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Learn-markdown"><a href="#Learn-markdown" class="headerlink" title="Learn markdown"></a>Learn markdown</h1><hr>
+<p>标题：</p>
+<hr>
+<p>类Setext：用底线</p>
+<blockquote>
+<p>最高阶标题用等号（=）表示；—&gt;可多个表示</p>
+<p>第二阶标题用减号（-）表示；—&gt;可多个表示</p>
+</blockquote>
+<p>类Atx：在首行用1-6个#表示；</p>
+<blockquote>
+<p>符号的个数代表的是几级标题；—&gt;可选择性是否闭合</p>
+</blockquote>
+<hr>
+<p>区块引用：</p>
+<blockquote>
+<p>在每行前加上（&gt;&gt; &gt;）；</p>
+<p>区块引用可以嵌套（引用内的引用），根据层次加上不同数量的 &gt; ：</p>
+</blockquote>
+<hr>
+<p>列表：</p>
+<hr>
+<blockquote>
+<p>支持有序列表和无序列表</p>
+<p>无序列表使用星号、加号或是减号作为列表标记：</p>
+<p>有序列表则使用数字接着一个英文句点：</p>
+<p>注意：</p>
+<blockquote>
+<ol>
+<li>需要在后面加空格才能有效；</li>
+<li>如果列表项目间用空行分开,在输出 HTML 时 Markdown 就会将项<br>目内容用p标签包起来；</li>
+<li>列表项目可以包括多个段落，但是每个段落要缩进四个空格或者一个制表符；</li>
+<li>在列表中放引用用&gt; &gt;是需要缩进的；</li>
+<li>如果要放代码区块的话，该区块就需要缩进两次;</li>
+<li>在行首出现数字-句点-空白，可以在句点前面加上反斜杠避免与之冲突。</li>
+</ol>
+</blockquote>
+</blockquote>
+<hr>
+<p>代码：</p>
+<hr>
+<p>代码小段：</p>
+<blockquote>
+<p>想要标记一小段行内的代码，我们可以用单引号将之括起来；</p>
+<p>想在代码区段中插入反引号，可以用多个反引号来开始或结束代码区段；</p>
+</blockquote>
+<p>代码块区：</p>
+<blockquote>
+<p>有时候我们需要原始的代码板块来说明，在Markdown中用<pre\>和<code\>标签将代码区段包起来;</code\></pre\></p>
+<p>建立代码区需要缩进4个空格或是一个制表符就ok，在转换后缩进会被移除。</p>
+<p>代码区将会持续到没有缩进的一行(或是文件结尾)；</p>
+<p>在代码区块里面， &amp; 、 &lt; 和 &gt; 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown 都会帮你处理,但是代码块区一般是不会转换。</p>
+</blockquote>
+<hr>
+<p>分割线：</p>
+<blockquote>
+<p>在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西,也可以在星号或是减号中间插入空格。</p>
+</blockquote>
+<hr>
+<p>区段元素：</p>
+<p>链接：</p>
+<blockquote>
+<p>主要分为两种形式：行内式和参考式两种形式。都是需要将链接的文字用[]标记。</p>
+<p>行内式的链接：</p>
+<p>只要在方块括号后面紧接着圆括号并插入网址链接即可，如果还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来。列如：</p>
+</blockquote>
+<pre><code>This [link](http://www.jq20.cn/ &quot;myblog&quot;)is
+going to paradise.    
+or
+This [link](http://www.jq20.cn/ )is
+going to paradise.
+</code></pre><p>注意：</p>
+<blockquote>
+<p>要链接到同一主机的资源可以使用相对路径。</p>
+</blockquote>
+<hr>
+<p>参考式：</p>
+<blockquote>
+<p>它的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：</p>
+</blockquote>
+<pre><code>This place is going to [paradise][id] .
+
+[id]: http://www.jq20.cn/ &quot;this is title&quot;
+</code></pre><p>链接内容定义的形式为：</p>
+<blockquote>
+<ol>
+<li>方括号（前面可以选择性地加上至多三个空格来缩进），里面输入链接文字;</li>
+<li>接着一个冒号;</li>
+<li>接着一个以上的空格或制表符;</li>
+<li>接着链接的网址(若不对就是版本的问题，可用尖括号将网址括起来);</li>
+<li>选择性地接着 title 内容，可以用单引号、双引号或是括弧包着;若网址太长为了美观可以将之放在下一行（可加缩进）。</li>
+</ol>
+</blockquote>
+<p>注意：</p>
+<blockquote>
+<ol>
+<li>网址的定义只有在鼠标放在链接的时候才会出现，不会直接出现在文件中；</li>
+<li>链接辨别标签可以有字母（不会区分大小写）、数字、空格和标点符号；</li>
+<li>隐式链接：将前面的参考式链接的id去掉，直接用链接的文字来定义链接；</li>
+<li>我们最好将连接的定义放在文本的末尾。</li>
+</ol>
+</blockquote>
+<hr>
+<p>自动链接：</p>
+<blockquote>
+<p>网址的链接文字和链接地址一样就可以直接用一个<strong>尖括号</strong>将网址括起来就形成了自动网址。</p>
+</blockquote>
+<hr>
+<p>图片：</p>
+<blockquote>
+<p>插入图片的方法和插入链接的方法是相差无几的，<br>具体步骤：</p>
+<ol>
+<li>先加一个感叹号；</li>
+<li>接着加入方括号里面添加图片代替文字；</li>
+<li>再加圆括号，里面放入图片的网址和备注的文字（和加入链接的方式一样）；</li>
+</ol>
+</blockquote>
+<pre><code>![Alt text](你的路径 备注)
+
+前面的内容都是固定的，只有后面的路径和备注可自己改变。    
+</code></pre><hr>
+<p>强调：</p>
+<blockquote>
+<p>一般将用*和_作为标记强调的字符，单个符号包围将被转为<em\>标签，两个会被转成<strong\>；</strong\></em\></p>
+<p>但是我们要注意什么符号开头就以什么符号结尾；</p>
+<p>当符号的两边都有空白会被当做普通的字符，可向转译符(反斜杠:想加入普通的符号都可用)求救。</p>
+</blockquote>
+<hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/11/Know markdown/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Learn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="JavaScript–小技巧"><a href="#JavaScript–小技巧" class="headerlink" title="JavaScript–小技巧"></a>JavaScript–小技巧</h2><p>在JavaScript中为减少全局变量命名的冲突我们将所有的变量或者函数都绑定在一个全局变量中；Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var MYAPP = &#123;&#125;; // 唯一的全局变量MYAPP:</div><div class="line"></div><div class="line">MYAPP.name = &apos;myapp&apos;;  // 其他变量:</div><div class="line">MYAPP.version = 1.0;</div><div class="line">// 其他函数:</div><div class="line">MYAPP.foo = function () &#123;</div><div class="line">    return &apos;foo&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/11/Learn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-animation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -329,57 +528,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/31/hello-world/">感想</a>
-    </h1>
-  
-
-        <a href="/2017/03/31/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-31T14:21:31.726Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个用的的确是很方便，简单的安装，比搭服务器也要简单的多，自己写点文章发表还是不错的，但是我想我们真的爱写博客也应该去尝试别的方法。提升自己的能力。</p>
-<hr>
-<h2 id="学习前端进程及理解"><a href="#学习前端进程及理解" class="headerlink" title="学习前端进程及理解"></a>学习前端进程及理解</h2><p>在实际的练习之前还是应该先去理解所要用的一些恭喜，这样才能提高我们的记忆力，不要为了节省力气去网上随便找代码，这样根本对自己没得多大的提升；只有我们学的时候多花时间，在工作时才能省去更多的时间，才有时间去学习新的知识。总之我们学习中是不能偷懒的，还有面对困难不要气馁，不要恐惧未来的事情，想做的事就去做，不要总是想着他很难，也不要随意的相信别人的话，只有自己去做才能知道，所以我们必须勤快一点。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/31/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
