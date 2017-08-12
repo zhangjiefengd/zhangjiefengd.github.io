@@ -150,48 +150,258 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Know markdown" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-form" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/11/Know markdown/">Markdown</a>
+      <a class="article-title" href="/2017/07/30/form/">form</a>
     </h1>
   
 
         
-        <a href="/2017/06/11/Know markdown/" class="archive-article-date">
-  	<time datetime="2017-06-11T09:04:16.399Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
+        <a href="/2017/07/30/form/" class="archive-article-date">
+  	<time datetime="2017-07-30T07:56:40.806Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>标题：</p>
+        <p>为了解决重复提交造成的错误：</p>
+<ol>
+<li>在第一次提交后就禁用提交按钮；</li>
+<li>利用onsubmit时间处理程序取消后续的表单提交操作</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/30/form/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-node.js" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/28/node.js/">node.js note</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/28/node.js/" class="archive-article-date">
+  	<time datetime="2017-07-28T03:18:15.260Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>将函数或数组输出必须用<code>module.exports</code>给对象赋值。</p>
+<p><code>exports</code>是个已经存在的空对象<code>{}</code>可以继续在中间添加新的键值；</p>
+<p>直接对<code>module.exports</code>赋值，可以应对多种情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  foo: function()&#123;return &apos;foo&apos;;&#125;</div><div class="line">&#125;;</div><div class="line">or </div><div class="line">module.exports = &#123;</div><div class="line">  function()&#123; return &apos;foo&apos;;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在node中:</p>
+<p>全局对象是<code>global</code>;</p>
+<p><code>process</code>是代表当前node.js进程,通过process对象能拿到许多有用的信息;</p>
+<p><code>process.nextTick()</code>并不是立刻执行的,而是在下一次事件循环;</p>
+<p><code>process.on(&#39;exit&#39;,function(){});</code>是在程序结束的时候才执行;</p>
+<p>异步读取文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">fs.readFile(&apos;sample.txt&apos;,&apos;utf-8&apos;,function(err,data)&#123;</div><div class="line">  if(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;else&#123;</div><div class="line">    console.log(data);</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>正常读取时，err参数为null,data参数为读取到的string;当读取发生错误时,err代表错误对象,data为undefined.–这是标准的回调函数:第一参数代表错误信息,第二参数代表结果.</p>
+<p>当读取二进制文件时:</p>
+<p>不传入文件的编码，回调函数的data参数将会变成返回一个buffer对象,buffer是一个包含零个或任意字节的数组(与array不同);</p>
 <hr>
-<p>类Setext：用底线</p>
+<p>同步读取文件:</p>
+<p>与异步不同的是函数名改为<code>readFileSync</code>,回调函数的data被函数直接返回.</p>
+<p>抓取错误需要用<code>try...catch</code>;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">  var data = fs.readFileSync(&apos;sample.txt&apos;,&apos;utf-8&apos;);</div><div class="line">  console.log(data);</div><div class="line">&#125;catch(err)&#123;</div><div class="line">  console.log(&apos;It\&apos;s wrong !&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>写入文件:</p>
+<p>通过<code>fs.writeFile()</code>实现(同步)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">var data = &apos;Hello, Node.js&apos;;</div><div class="line">fs.writeFile(&apos;文件名&apos;,数据，回调函数function(err)&#123;</div><div class="line">  if(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;else&#123;</div><div class="line">    console.log(&apos;ok&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>异步与异步读取文件是相似的.</p>
+<hr>
+<p>获取文件的信息情况:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">fs.stat(&apos;name&apos;,function(err,data)&#123;</div><div class="line">  if(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;else&#123;</div><div class="line">    //是否是文件，目录</div><div class="line">    console.log(&apos;isFile: &apos;+stat.isFile());</div><div class="line">    console.log(&apos;isDirectory: &apos;+stat.isDirectory());</div><div class="line">    if(stat.isFile())&#123;</div><div class="line">      console.log(&apos;size: &apos;+stat.size);</div><div class="line">      console.log(&apos;time: &apos;+stat.birthtime);</div><div class="line">      console.log(&apos;mtime: &apos;+stat.mtime);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/28/node.js/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-New life" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/23/New life/">如何去学习</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/23/New life/" class="archive-article-date">
+  	<time datetime="2017-07-23T07:52:07.973Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>及时去写文档，记录自己对之的理解方式。。</p>
+<hr>
+<p>###BFC###</p>
+<p>Block formatting context简称BFC,块级盒参与块级格式的上下文，是用于布局块级盒子的一块渲染的区域。</p>
+<p>BFC的形成条件：</p>
+<ol>
+<li>float的值不为none；</li>
+<li>position 的值为fixed和absolute;</li>
+<li>display的值为table-cell、table-caption、inline-block、fiex或inline-flex;</li>
+<li>overflow不为visibility。</li>
+</ol>
+<p>BFC的特性</p>
+<ol>
+<li><p>在BFC中，盒子都是从它的包含块的顶部一个一个的垂直放置的，盒模型的垂直间距是取决于margin，但是在BFC中margin的在垂直方向和盒模型的算法是不相同的。在BFC中两个相邻盒模型的margin值是取其中最大的那个值，而不是两个margin值得和。</p>
+</li>
+<li><p>在BFC中，每个盒子的左(右)边边界是紧挨着父级的左(右)边界的；既使是浮动元素也是一样的作用(即使是一个盒子的行盒因为浮动而收缩了)，当然这个盒子又新建立一个新的BFC(在某些情况下这个盒子的自身会因浮动而变窄)。</p>
+</li>
+</ol>
+<p>###IFC###</p>
+<p>Inline formatting context简称IFC，是行内级盒子和行级格式的上下文。</p>
+<ol>
+<li><p>分布情况：</p>
+<p> 在IFC中，盒子从顶端开始一个个水平放置，水平的margin、border和padding被平分，对其的方式不定，大概分为从顶部和底部对齐，或者是通过文字的基线进行对齐，包含着一行的盒子就叫做line-box。它的高度是由浮动的情况和父级所决定，高度是由line-height的计算机结果所决定的。</p>
+</li>
+<li></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/23/New life/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post---js笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/21/--js笔记/">js笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/21/--js笔记/" class="archive-article-date">
+  	<time datetime="2017-07-21T02:06:04.527Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p><code>Map</code>就是一个二维的数组，一个<code>key</code>对应一个<code>value</code>，多次放入<code>value</code>会将前面<code>value</code>覆盖；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a = new Map();a.set()加入，a.has()是否存在；a.get()获取value值</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>Set</code>就是一个不会重复的一个数组；</p>
 <blockquote>
-<p>最高阶标题用等号（=）表示；—&gt;可多个表示</p>
-<p>第二阶标题用减号（-）表示；—&gt;可多个表示</p>
+<p><code>Map</code>和<code>Set</code>不能用下标遍历数组</p>
 </blockquote>
-<p>类Atx：在首行用1-6个#表示；</p>
-<blockquote>
-<p>符号的个数代表的是几级标题；—&gt;可选择性是否闭合</p>
-</blockquote>
+<p>循环 : for( (key)in(value) ) 得到的是string而不是number     遍历的是对象属性名</p>
+<p>do{循环体}while(判断条件)只有这个循环是必须执行一次</p>
+<p><code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
+<p><code>iterable</code>类型可以通过新的<code>for ... of</code>循环来遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</div><div class="line">a.name = &apos;Hello&apos;;</div><div class="line">for (var x of a) &#123;</div><div class="line">    alert(x); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>iterable</code>的内置函数<code>forEach</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var s = [];</div><div class="line">a.forEach(function(element, index,arry)&#123;</div><div class="line">	//element: 指向当前的元素的值(value)</div><div class="line">    //index: 索引(key)</div><div class="line">    //arry: 指向本类型</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
 <hr>
-<p>区块引用：</p>
-<blockquote>
-<p>在每行前加上（&gt;&gt; &gt;）；</p>
-<p>区块引用可以嵌套（引用内的引用），根据层次加上不同数量的 &gt; ：</p>
-</blockquote>
+<p>  对原函数调用函数其中this的解决可用： </p>
+<p>​    <code>apply()</code>接收两个参数第一个是绑定this的变量，第二个是<code>array</code>表示将函数本身的参数打包成<code>Array</code>再传入，而<code>call()</code>与之不同的是第二个是把参数按顺序传入(可以继承另一个对象的属性)</p>
 <hr>
-        
-          <a class="article-more-a" href="/2017/06/11/Know markdown/#more">more >></a>
-        
+<p><code>Map()</code>得调用就是将<code>Array</code>中传入某个函数并返回新的<code>Array</code> </p>
+<p><code>reduce()</code>必须接收两个参数，并把结果继续和下一个元素累积做处理</p>
+<p><code>filter()</code>是过滤掉其中的不满足条件的元素</p>
+<p><code>sort()</code>默认是按照ASCLL码进行排序的，我们也可以自定义一个函数进行排序</p>
+<hr>
+<p>闭包：返回函数不要引用任何循环变量，或者后续会发生变化的变量</p>
+<p>闭包让函数延迟执行，并且能携带对外完全隐藏的局部变量，能将多参数的函数变为单参数的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function make_pow(n)&#123;</div><div class="line">  return function(x)&#123;</div><div class="line">    return Math.pow(x,n);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var pown = make_pow(n);</div><div class="line"></div><div class="line">poe3(x)</div></pre></td></tr></table></figure>
+<hr>
+<p>箭头函数：</p>
+<p>由于<code>this</code>在箭头函数中已经按照词法作用域绑定了，所以，用<code>call()</code>或者<code>apply()</code>调用箭头函数时，无法对<code>this</code>进行绑定，即传入的第一个参数被忽略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">    birth: 1990,</div><div class="line">    getAge: function (year) &#123;</div><div class="line">        var b = this.birth; </div><div class="line">        var fn = (y) =&gt; y - this.birth; // this.birth仍是1990</div><div class="line">        return fn.call(&#123;birth:2000&#125;, year);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">obj.getAge(2015);</div></pre></td></tr></table></figure>
+
       
 
       
@@ -203,7 +413,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/11/Know markdown/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/21/--js笔记/">展开全文 >></a>
         </p>
       
 
@@ -218,146 +428,28 @@
 
 
   
-    <article id="post-Learn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mayion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/11/Learn/">JavaScript--小技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/11/Learn/" class="archive-article-date">
-  	<time datetime="2017-06-11T07:40:52.620Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在JavaScript中为减少全局变量命名的冲突我们将所有的变量或者函数都绑定在一个全局变量中；Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var MYAPP = &#123;&#125;; // 唯一的全局变量MYAPP:</div><div class="line"></div><div class="line">MYAPP.name = &apos;myapp&apos;;  // 其他变量:</div><div class="line">MYAPP.version = 1.0;</div><div class="line">// 其他函数:</div><div class="line">MYAPP.foo = function () &#123;</div><div class="line">    return &apos;foo&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/11/Learn/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-animation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/animation/">css3动画</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/animation/" class="archive-article-date">
-  	<time datetime="2017-06-02T15:21:42.486Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>animation的属性:</p>
-<hr>
-<p>一、动画目标的名字: animation-name</p>
-<p>二、动画一周期花的时间: animation-duration</p>
-<p>三、动画的速度控制：animation-timing-function</p>
-<p>linear: 速度一直不变；</p>
-<p>ease: 默认的属性，低速-加快-变慢；</p>
-<p>ease-on,ease-out,ease-in-out: 低速开始，低速结束，低速开始和结束；</p>
-<p>cubic-bezier(n,n,n,n)–<a href="http://cubic-bezier.com/" target="_blank" rel="external">三次贝塞尔函数</a>: 从0-1中选择想要的数值去改变速度。<br>
-        
-          <a class="article-more-a" href="/2017/06/02/animation/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/animation/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-github添加ssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/12/github添加ssh/">windows中github的ssh密匙</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/12/github添加ssh/" class="archive-article-date">
-  	<time datetime="2017-05-12T15:57:43.120Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>检查本机是否有ssh key设置</p>
-<hr>
-<p>输入 $cd ~/.ssh</p>
-<p>$ls </p>
-<p>检查是否有id_rsa和id_rsa.pub这两个文件，有这两个文件就直接在你的github账号中的settings中ssh and GPG keys中添加ssh的内容。</p>
-<p>若没有则进行</p>
-<p>$ssh-keygen -t rsa -C “你的邮箱”</p>
-<p>以后全部回车就将生成id_rsa和id_rsa.pub两个文件，再进行以上操作。</p>
-<p>一个账号对应一个ssh，所以想在加一个就在.ssh文件所在的位置找到.gitconfid文件用你的文本编辑器添加你的用户名和邮箱。<br>在进行以上操作，只有一处不同。</p>
-<p>在$ssh-keygen -t rsa -C “你的邮箱”后最先会显示</p>
-<p> Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</p>
-<p>不要回车</p>
-<p>改变起名字</p>
-<p>列如：Enter file in which to save the key (/c/Users/you/.ssh/id_rsa_ppp): [Press enter]</p>
+        <p><code>网页可见区域宽： document.body.clientWidth;</code></p>
+<p><code>网页可见区域高： document.body.clientHeight;</code></p>
+<p><code>网页可见区域宽： document.body.offsetWidth (包括边线和滚动条的宽);</code></p>
+<p><code>网页可见区域高： document.body.offsetHeight (包括边线的宽);</code></p>
+<p><code>网页正文全文宽： document.body.scrollWidth;</code></p>
+<p><code>网页正文全文高： document.body.scrollHeight;</code></p>
+<p><code>网页被卷去的高(ff)：document.body.scrollTop;</code></p>
+<p><code>网页被卷去的高(ie): document.documentElement.scrollTop;</code></p>
+<p><code>网页被卷去的左：document.body.scrollLeft;</code></p>
+<p><code>网页正文部分上：window.screenTop;</code></p>
+<p><code>网页正文部分左：window.screenLeft;</code></p>
+<p><code>某个元素的宽度：obj.offsetWidth;</code></p>
+<p><code>某个元素的高度：obj.offsetHeight;</code></p>
+<p><code>某个元素的上边界到body最顶部的距离：obj.offsetTop;（在元素的包含元素不含滚动条的情况下）</code></p>
+<p><code>某个元素的左边界到body最左边的距离：obj.offsetLeft;（在元素的包含元素不含滚动条的情况下）</code></p>
+<p><code>返回当前元素的上边界到它的包含元素的上边界的偏移量：obj.offsetTop（在元素的包含元素含滚动条的情况下）</code></p>
+<p><code>返回当前元素的左边界到它的包含元素的左边界的偏移量：obj.offsetLeft（在元素的包含元素含滚动条的情况下）</code></p>
 
       
 
@@ -370,64 +462,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/12/github添加ssh/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-second" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/second/">linux手动搭配lamp环境</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/16/second/" class="archive-article-date">
-  	<time datetime="2017-04-16T08:43:25.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、准备工作：</p>
-<hr>
-<p>1、配置防火墙，开启80端口、3306端口</p>
-<p>vi /etc/sysconfig/iptables</p>
-<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT          //允许80端口通过防火墙</p>
-<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT          //允许3306端口通过防火墙</p>
-<p>将以上内容添加到 -A INPUT -m state –state NEW -m tcp -p tcp –dport 22 -j ACCEPT 的下面</p>
-<p>/etc/init.d/iptables restart  //最后重启防火墙使配置生效<br>
-        
-          <a class="article-more-a" href="/2017/04/16/second/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/16/second/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/20/mayion/">展开全文 >></a>
         </p>
       
 
@@ -444,7 +479,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

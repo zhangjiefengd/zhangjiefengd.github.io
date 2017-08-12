@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | blog</title>
+  <title>js笔记 | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IT小新">
-<meta property="og:type" content="website">
-<meta property="og:title" content="blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/page/2/index.html">
+  <meta name="description" content="Map就是一个二维的数组，一个key对应一个value，多次放入value会将前面value覆盖； 1var a = new Map();a.set()加入，a.has()是否存在；a.get()获取value值  Set就是一个不会重复的一个数组；  Map和Set不能用下标遍历数组  循环 : for( (key)in(value) ) 得到的是string而不是number     遍历的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/--js笔记/index.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="IT小新">
+<meta property="og:description" content="Map就是一个二维的数组，一个key对应一个value，多次放入value会将前面value覆盖； 1var a = new Map();a.set()加入，a.has()是否存在；a.get()获取value值  Set就是一个不会重复的一个数组；  Map和Set不能用下标遍历数组  循环 : for( (key)in(value) ) 得到的是string而不是number     遍历的">
+<meta property="og:updated_time" content="2017-07-21T17:16:15.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blog">
-<meta name="twitter:description" content="IT小新">
+<meta name="twitter:title" content="js笔记">
+<meta name="twitter:description" content="Map就是一个二维的数组，一个key对应一个value，多次放入value会将前面value覆盖； 1var a = new Map();a.set()加入，a.has()是否存在；a.get()获取value值  Set就是一个不会重复的一个数组；  Map和Set不能用下标遍历数组  循环 : for( (key)in(value) ) 得到的是string而不是number     遍历的">
   
     <link rel="alternative" href="/atom.xml" title="blog" type="application/atom+xml">
   
@@ -148,160 +149,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post---js笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js笔记
+    </h1>
+  
+
+        
+        <a href="/2017/07/21/--js笔记/" class="archive-article-date">
+  	<time datetime="2017-07-21T02:06:04.527Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p><code>Map</code>就是一个二维的数组，一个<code>key</code>对应一个<code>value</code>，多次放入<code>value</code>会将前面<code>value</code>覆盖；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a = new Map();a.set()加入，a.has()是否存在；a.get()获取value值</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>Set</code>就是一个不会重复的一个数组；</p>
+<blockquote>
+<p><code>Map</code>和<code>Set</code>不能用下标遍历数组</p>
+</blockquote>
+<p>循环 : for( (key)in(value) ) 得到的是string而不是number     遍历的是对象属性名</p>
+<p>do{循环体}while(判断条件)只有这个循环是必须执行一次</p>
+<p><code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
+<p><code>iterable</code>类型可以通过新的<code>for ... of</code>循环来遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</div><div class="line">a.name = &apos;Hello&apos;;</div><div class="line">for (var x of a) &#123;</div><div class="line">    alert(x); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>iterable</code>的内置函数<code>forEach</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var s = [];</div><div class="line">a.forEach(function(element, index,arry)&#123;</div><div class="line">	//element: 指向当前的元素的值(value)</div><div class="line">    //index: 索引(key)</div><div class="line">    //arry: 指向本类型</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<p>  对原函数调用函数其中this的解决可用： </p>
+<p>​    <code>apply()</code>接收两个参数第一个是绑定this的变量，第二个是<code>array</code>表示将函数本身的参数打包成<code>Array</code>再传入，而<code>call()</code>与之不同的是第二个是把参数按顺序传入(可以继承另一个对象的属性)</p>
+<hr>
+<p><code>Map()</code>得调用就是将<code>Array</code>中传入某个函数并返回新的<code>Array</code> </p>
+<p><code>reduce()</code>必须接收两个参数，并把结果继续和下一个元素累积做处理</p>
+<p><code>filter()</code>是过滤掉其中的不满足条件的元素</p>
+<p><code>sort()</code>默认是按照ASCLL码进行排序的，我们也可以自定义一个函数进行排序</p>
+<hr>
+<p>闭包：返回函数不要引用任何循环变量，或者后续会发生变化的变量</p>
+<p>闭包让函数延迟执行，并且能携带对外完全隐藏的局部变量，能将多参数的函数变为单参数的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function make_pow(n)&#123;</div><div class="line">  return function(x)&#123;</div><div class="line">    return Math.pow(x,n);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var pown = make_pow(n);</div><div class="line"></div><div class="line">poe3(x)</div></pre></td></tr></table></figure>
+<hr>
+<p>箭头函数：</p>
+<p>由于<code>this</code>在箭头函数中已经按照词法作用域绑定了，所以，用<code>call()</code>或者<code>apply()</code>调用箭头函数时，无法对<code>this</code>进行绑定，即传入的第一个参数被忽略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">    birth: 1990,</div><div class="line">    getAge: function (year) &#123;</div><div class="line">        var b = this.birth; </div><div class="line">        var fn = (y) =&gt; y - this.birth; // this.birth仍是1990</div><div class="line">        return fn.call(&#123;birth:2000&#125;, year);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">obj.getAge(2015);</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thinks!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/11/Know markdown/" class="archive-article-date">
-  	<time datetime="2017-06-11T09:04:16.399Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/11/Know markdown/">Markdown</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/21/--js笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/11/Learn/" class="archive-article-date">
-  	<time datetime="2017-06-11T07:40:52.620Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/11/Learn/">JavaScript--小技巧</a>
-    </h1>
+    <a href="/2017/07/23/New life/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          如何去学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/20/mayion/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/animation/" class="archive-article-date">
-  	<time datetime="2017-06-02T15:21:42.486Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/animation/">css3动画</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/12/github添加ssh/" class="archive-article-date">
-  	<time datetime="2017-05-12T15:57:43.120Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/12/github添加ssh/">windows中github的ssh密匙</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/16/second/" class="archive-article-date">
-  	<time datetime="2017-04-16T08:43:25.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/16/second/">linux手动搭配lamp环境</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -325,8 +345,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

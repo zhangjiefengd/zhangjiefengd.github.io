@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | blog</title>
+  <title>node.js note | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IT小新">
-<meta property="og:type" content="website">
-<meta property="og:title" content="blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/page/2/index.html">
+  <meta name="description" content="将函数或数组输出必须用module.exports给对象赋值。 exports是个已经存在的空对象{}可以继续在中间添加新的键值； 直接对module.exports赋值，可以应对多种情况。 1234567module.exports = &amp;#123;  foo: function()&amp;#123;return &amp;apos;foo&amp;apos;;&amp;#125;&amp;#125;;or module.expor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js note">
+<meta property="og:url" content="http://yoursite.com/2017/07/28/node.js/index.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="IT小新">
+<meta property="og:description" content="将函数或数组输出必须用module.exports给对象赋值。 exports是个已经存在的空对象{}可以继续在中间添加新的键值； 直接对module.exports赋值，可以应对多种情况。 1234567module.exports = &amp;#123;  foo: function()&amp;#123;return &amp;apos;foo&amp;apos;;&amp;#125;&amp;#125;;or module.expor">
+<meta property="og:updated_time" content="2017-07-30T00:38:15.568Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blog">
-<meta name="twitter:description" content="IT小新">
+<meta name="twitter:title" content="node.js note">
+<meta name="twitter:description" content="将函数或数组输出必须用module.exports给对象赋值。 exports是个已经存在的空对象{}可以继续在中间添加新的键值； 直接对module.exports赋值，可以应对多种情况。 1234567module.exports = &amp;#123;  foo: function()&amp;#123;return &amp;apos;foo&amp;apos;;&amp;#125;&amp;#125;;or module.expor">
   
     <link rel="alternative" href="/atom.xml" title="blog" type="application/atom+xml">
   
@@ -148,160 +149,172 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-node.js" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node.js note
+    </h1>
+  
+
+        
+        <a href="/2017/07/28/node.js/" class="archive-article-date">
+  	<time datetime="2017-07-28T03:18:15.260Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>将函数或数组输出必须用<code>module.exports</code>给对象赋值。</p>
+<p><code>exports</code>是个已经存在的空对象<code>{}</code>可以继续在中间添加新的键值；</p>
+<p>直接对<code>module.exports</code>赋值，可以应对多种情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  foo: function()&#123;return &apos;foo&apos;;&#125;</div><div class="line">&#125;;</div><div class="line">or </div><div class="line">module.exports = &#123;</div><div class="line">  function()&#123; return &apos;foo&apos;;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在node中:</p>
+<p>全局对象是<code>global</code>;</p>
+<p><code>process</code>是代表当前node.js进程,通过process对象能拿到许多有用的信息;</p>
+<p><code>process.nextTick()</code>并不是立刻执行的,而是在下一次事件循环;</p>
+<p><code>process.on(&#39;exit&#39;,function(){});</code>是在程序结束的时候才执行;</p>
+<p>异步读取文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">fs.readFile(&apos;sample.txt&apos;,&apos;utf-8&apos;,function(err,data)&#123;</div><div class="line">  if(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;else&#123;</div><div class="line">    console.log(data);</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>正常读取时，err参数为null,data参数为读取到的string;当读取发生错误时,err代表错误对象,data为undefined.–这是标准的回调函数:第一参数代表错误信息,第二参数代表结果.</p>
+<p>当读取二进制文件时:</p>
+<p>不传入文件的编码，回调函数的data参数将会变成返回一个buffer对象,buffer是一个包含零个或任意字节的数组(与array不同);</p>
+<hr>
+<p>同步读取文件:</p>
+<p>与异步不同的是函数名改为<code>readFileSync</code>,回调函数的data被函数直接返回.</p>
+<p>抓取错误需要用<code>try...catch</code>;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">  var data = fs.readFileSync(&apos;sample.txt&apos;,&apos;utf-8&apos;);</div><div class="line">  console.log(data);</div><div class="line">&#125;catch(err)&#123;</div><div class="line">  console.log(&apos;It\&apos;s wrong !&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>写入文件:</p>
+<p>通过<code>fs.writeFile()</code>实现(同步)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">var data = &apos;Hello, Node.js&apos;;</div><div class="line">fs.writeFile(&apos;文件名&apos;,数据，回调函数function(err)&#123;</div><div class="line">  if(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;else&#123;</div><div class="line">    console.log(&apos;ok&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>异步与异步读取文件是相似的.</p>
+<hr>
+<p>获取文件的信息情况:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">fs.stat(&apos;name&apos;,function(err,data)&#123;</div><div class="line">  if(err)&#123;</div><div class="line">    console.log(err);</div><div class="line">  &#125;else&#123;</div><div class="line">    //是否是文件，目录</div><div class="line">    console.log(&apos;isFile: &apos;+stat.isFile());</div><div class="line">    console.log(&apos;isDirectory: &apos;+stat.isDirectory());</div><div class="line">    if(stat.isFile())&#123;</div><div class="line">      console.log(&apos;size: &apos;+stat.size);</div><div class="line">      console.log(&apos;time: &apos;+stat.birthtime);</div><div class="line">      console.log(&apos;mtime: &apos;+stat.mtime);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thinks!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/11/Know markdown/" class="archive-article-date">
-  	<time datetime="2017-06-11T09:04:16.399Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/11/Know markdown/">Markdown</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/28/node.js/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/11/Learn/" class="archive-article-date">
-  	<time datetime="2017-06-11T07:40:52.620Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/11/Learn/">JavaScript--小技巧</a>
-    </h1>
+    <a href="/2017/07/30/form/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          form
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/23/New life/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何去学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/animation/" class="archive-article-date">
-  	<time datetime="2017-06-02T15:21:42.486Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/animation/">css3动画</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/12/github添加ssh/" class="archive-article-date">
-  	<time datetime="2017-05-12T15:57:43.120Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/12/github添加ssh/">windows中github的ssh密匙</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/16/second/" class="archive-article-date">
-  	<time datetime="2017-04-16T08:43:25.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/16/second/">linux手动搭配lamp环境</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -325,8 +338,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
