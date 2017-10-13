@@ -150,6 +150,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-正则表达" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>\d</code>匹配一个数字,<code>\w</code>匹配一个数字或字母;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/12/正则表达/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/08/webpack/">webpack</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/08/webpack/" class="archive-article-date">
+  	<time datetime="2017-09-08T03:15:38.749Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/08/webpack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-form" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -282,7 +362,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/23/New life/">如何去学习</a>
+      <a class="article-title" href="/2017/07/23/New life/">学习</a>
     </h1>
   
 
@@ -295,9 +375,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>及时去写文档，记录自己对之的理解方式。。</p>
-<hr>
-<p>###BFC###</p>
+        <p>###BFC###</p>
 <p>Block formatting context简称BFC,块级盒参与块级格式的上下文，是用于布局块级盒子的一块渲染的区域。</p>
 <p>BFC的形成条件：</p>
 <ol>
@@ -334,135 +412,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/07/23/New life/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post---js笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/21/--js笔记/">js笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/21/--js笔记/" class="archive-article-date">
-  	<time datetime="2017-07-21T02:06:04.527Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p><code>Map</code>就是一个二维的数组，一个<code>key</code>对应一个<code>value</code>，多次放入<code>value</code>会将前面<code>value</code>覆盖；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a = new Map();a.set()加入，a.has()是否存在；a.get()获取value值</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>Set</code>就是一个不会重复的一个数组；</p>
-<blockquote>
-<p><code>Map</code>和<code>Set</code>不能用下标遍历数组</p>
-</blockquote>
-<p>循环 : for( (key)in(value) ) 得到的是string而不是number     遍历的是对象属性名</p>
-<p>do{循环体}while(判断条件)只有这个循环是必须执行一次</p>
-<p><code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。</p>
-<p><code>iterable</code>类型可以通过新的<code>for ... of</code>循环来遍历</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</div><div class="line">a.name = &apos;Hello&apos;;</div><div class="line">for (var x of a) &#123;</div><div class="line">    alert(x); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>iterable</code>的内置函数<code>forEach</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var s = [];</div><div class="line">a.forEach(function(element, index,arry)&#123;</div><div class="line">	//element: 指向当前的元素的值(value)</div><div class="line">    //index: 索引(key)</div><div class="line">    //arry: 指向本类型</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-<p>  对原函数调用函数其中this的解决可用： </p>
-<p>​    <code>apply()</code>接收两个参数第一个是绑定this的变量，第二个是<code>array</code>表示将函数本身的参数打包成<code>Array</code>再传入，而<code>call()</code>与之不同的是第二个是把参数按顺序传入(可以继承另一个对象的属性)</p>
-<hr>
-<p><code>Map()</code>得调用就是将<code>Array</code>中传入某个函数并返回新的<code>Array</code> </p>
-<p><code>reduce()</code>必须接收两个参数，并把结果继续和下一个元素累积做处理</p>
-<p><code>filter()</code>是过滤掉其中的不满足条件的元素</p>
-<p><code>sort()</code>默认是按照ASCLL码进行排序的，我们也可以自定义一个函数进行排序</p>
-<hr>
-<p>闭包：返回函数不要引用任何循环变量，或者后续会发生变化的变量</p>
-<p>闭包让函数延迟执行，并且能携带对外完全隐藏的局部变量，能将多参数的函数变为单参数的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function make_pow(n)&#123;</div><div class="line">  return function(x)&#123;</div><div class="line">    return Math.pow(x,n);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var pown = make_pow(n);</div><div class="line"></div><div class="line">poe3(x)</div></pre></td></tr></table></figure>
-<hr>
-<p>箭头函数：</p>
-<p>由于<code>this</code>在箭头函数中已经按照词法作用域绑定了，所以，用<code>call()</code>或者<code>apply()</code>调用箭头函数时，无法对<code>this</code>进行绑定，即传入的第一个参数被忽略：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">    birth: 1990,</div><div class="line">    getAge: function (year) &#123;</div><div class="line">        var b = this.birth; </div><div class="line">        var fn = (y) =&gt; y - this.birth; // this.birth仍是1990</div><div class="line">        return fn.call(&#123;birth:2000&#125;, year);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">obj.getAge(2015);</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/21/--js笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-mayion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>网页可见区域宽： document.body.clientWidth;</code></p>
-<p><code>网页可见区域高： document.body.clientHeight;</code></p>
-<p><code>网页可见区域宽： document.body.offsetWidth (包括边线和滚动条的宽);</code></p>
-<p><code>网页可见区域高： document.body.offsetHeight (包括边线的宽);</code></p>
-<p><code>网页正文全文宽： document.body.scrollWidth;</code></p>
-<p><code>网页正文全文高： document.body.scrollHeight;</code></p>
-<p><code>网页被卷去的高(ff)：document.body.scrollTop;</code></p>
-<p><code>网页被卷去的高(ie): document.documentElement.scrollTop;</code></p>
-<p><code>网页被卷去的左：document.body.scrollLeft;</code></p>
-<p><code>网页正文部分上：window.screenTop;</code></p>
-<p><code>网页正文部分左：window.screenLeft;</code></p>
-<p><code>某个元素的宽度：obj.offsetWidth;</code></p>
-<p><code>某个元素的高度：obj.offsetHeight;</code></p>
-<p><code>某个元素的上边界到body最顶部的距离：obj.offsetTop;（在元素的包含元素不含滚动条的情况下）</code></p>
-<p><code>某个元素的左边界到body最左边的距离：obj.offsetLeft;（在元素的包含元素不含滚动条的情况下）</code></p>
-<p><code>返回当前元素的上边界到它的包含元素的上边界的偏移量：obj.offsetTop（在元素的包含元素含滚动条的情况下）</code></p>
-<p><code>返回当前元素的左边界到它的包含元素的左边界的偏移量：obj.offsetLeft（在元素的包含元素含滚动条的情况下）</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/20/mayion/">展开全文 >></a>
         </p>
       
 
